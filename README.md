@@ -1,3 +1,5 @@
+> **warning** This package is still under development and is not ready for use in production. Please do not use it in production until this warning is removed.
+
 # A Laravel package for interacting with https://www.pesapal.com api
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
