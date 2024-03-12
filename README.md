@@ -27,7 +27,7 @@ You can install the package via composer:
 composer require artisanelevated/laravel-pesapal
 ```
 
-You can publish and run the migrations with:
+Publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-pesapal-migrations"
@@ -38,13 +38,6 @@ You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-pesapal-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
 ```
 
 Update your environment variables in your application.
@@ -89,6 +82,8 @@ Schedule::call('model:prune')->everyFourMinutes();
 ```
 
 ## Testing
+
+> **Info** Authentication test uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), therefore the request is not mocked. This ensures the stability of the package.
 
 ```bash
 composer test
