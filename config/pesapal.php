@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'pesapal_live' => env(key: 'PESAPAL_LIVE'),
+    'pesapal_live' => env(key: 'PESAPAL_LIVE', default: false),
 
 
     /*
@@ -29,9 +29,10 @@ return [
     |
     */
 
-    'base_url' => env(key: 'PESAPAL_LIVE') === true
-        ? 'https://pay.pesapal.com/v3'
-        : 'https://cybqa.pesapal.com/pesapalv3',
+    'base_url' => [
+        'live'    => 'https://pay.pesapal.com/v3',
+        'staging' => 'https://cybqa.pesapal.com/pesapalv3',
+    ],
 
     /*
     |--------------------------------------------------------------------------

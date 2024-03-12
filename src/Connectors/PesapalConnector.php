@@ -10,7 +10,11 @@ class PesapalConnector extends Connector
 
     public function __construct()
     {
-        $this->baseUrl = config(key: 'pesapal.base_url');
+        if (config(key: 'pesapal.pesapal_live')) {
+            $this->baseUrl = config(key: 'pesapal.base_url.live');
+        } else {
+            $this->baseUrl = config(key: 'pesapal.base_url.staging');
+        }
     }
 
     public function resolveBaseUrl(): string

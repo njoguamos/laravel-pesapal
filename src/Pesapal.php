@@ -3,7 +3,7 @@
 namespace ArtisanElevated\Pesapal;
 
 use ArtisanElevated\Pesapal\Connectors\PesapalConnector;
-use ArtisanElevated\Pesapal\Requests\GetPesapalAccessToken;
+use ArtisanElevated\Pesapal\Requests\GetPesapalToken;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 use Saloon\Http\Response;
@@ -17,7 +17,7 @@ class Pesapal
     public static function getAccessToken(): Response
     {
         $connector = new PesapalConnector();
-        $request = new GetPesapalAccessToken();
+        $request = new GetPesapalToken();
 
         return $connector->send($request);
     }

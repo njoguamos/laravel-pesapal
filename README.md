@@ -83,7 +83,7 @@ Schedule::call('model:prune')->everyFourMinutes();
 
 ## Testing
 
-> **Info** Authentication test uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), therefore the request is not mocked. This ensures the stability of the package.
+> **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. This ensures the stability of the package. Where it is impossible to use real credentials, the request is mocked.
 
 ```bash
 composer test
