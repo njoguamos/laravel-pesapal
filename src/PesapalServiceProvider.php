@@ -19,7 +19,7 @@ class PesapalServiceProvider extends PackageServiceProvider
             ->name(name: 'laravel-pesapal')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration(migrationFileName: 'create_pesapal_access_tokens_table')
+            ->hasMigration(migrationFileName: 'create_pesapal_tokens_table')
             ->hasCommand(commandClassName: PesapalAuthCommand::class);
     }
 }

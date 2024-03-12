@@ -2,7 +2,7 @@
 
 ![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=artisanelevated%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
-# A Laravel package for interacting with https://www.pesapal.com api
+# A Laravel package for interacting with Pesapal API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/artisanelevated/laravel-pesapal/actions?query=workflow%3Arun-tests+branch%3Amain)
