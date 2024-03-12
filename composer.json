@@ -2,6 +2,7 @@
     "name": "artisanelevated/laravel-pesapal",
     "description": "A Laravel package for interacting with https://www.pesapal.com api",
     "keywords": [
+        "Artisan Elevated",
         "laravel",
         "pesapal",
         "payment"
@@ -10,15 +11,16 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Artisan Elevated",
-            "email": "29255728+njoguamos@users.noreply.github.com",
+            "name": "Njogu Amos",
+            "email": "njoguamos@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "illuminate/contracts": "^10.0",
+        "saloonphp/saloon": "^3.0",
+        "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",

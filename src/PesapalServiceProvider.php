@@ -4,7 +4,7 @@ namespace ArtisanElevated\Pesapal;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ArtisanElevated\Pesapal\Commands\PesapalCommand;
+use ArtisanElevated\Pesapal\Commands\PesapalAuthCommand;
 
 class PesapalServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +19,7 @@ class PesapalServiceProvider extends PackageServiceProvider
             ->name(name: 'laravel-pesapal')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration(migrationFileName: 'create_laravel-pesapal_table')
-            ->hasCommand(commandClassName: PesapalCommand::class);
+            ->hasMigration(migrationFileName: 'create_pesapal_access_tokens_table')
+            ->hasCommand(commandClassName: PesapalAuthCommand::class);
     }
 }

@@ -1,5 +1,7 @@
 > **warning** This package is still under development and is not ready for use in production. Please do not use it in production until this warning is removed.
 
+![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=artisanelevated%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+
 # A Laravel package for interacting with https://www.pesapal.com api
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
@@ -12,6 +14,10 @@
 ## Support us
 
 - [] TODO: Add a link to the support page
+
+## Why use this package
+- To provide a way of generating Pesapal api `access_token` which normally expires after 5 minutes
+- Offer a gateway to interacting with Pesapal v3 API
 
 ## Installation
 
@@ -41,17 +47,45 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
+Update your environment variables in your application.
 
-```bash
-php artisan vendor:publish --tag="laravel-pesapal-views"
+```dotenv
+PESAPAL_LIVE=
+PESAPAL_CONSUMER_KEY=
+PESAPAL_CONSUMER_SECRET=
 ```
 
 ## Usage
 
+### Generate `access_token`
+
+To generate an `access_token` you can run the following command:
+
+```bash
+php artisan pesapal:auth
+```
+
+The command will get a fresh `access_token` from Pesapal API using the `CONSUMER_KEY` and `CONSUMER_SECRET` and save it in the database. The `access_token` is valid for 5 minutes therefore is wise to schedule the command to run every 4 minutes. In addition, when you have set `model:prune` command, all expired `access_token` will be deleted from the database since they are no longer useful.
+
 ```php
-$pesapal = new ArtisanElevated\Pesapal();
-echo $pesapal->echoPhrase('Hello, ArtisanElevated!');
+ # Laravel 10 -> app/Console/Kernel.php
+ 
+class Kernel extends ConsoleKernel
+{
+ 
+    protected function schedule(Schedule $schedule): void
+    {
+        # Other scheduled commands
+        $schedule->command('pesapal:auth')->everyFourMinutes();
+        $schedule->command('model:prune')->daily();
+    }
+}
+```
+
+```php
+ # Laravel 11 -> routes/console.php
+Schedule::call('pesapal:auth')->everyFourMinutes();
+Schedule::call('model:prune')->everyFourMinutes();
 ```
 
 ## Testing
