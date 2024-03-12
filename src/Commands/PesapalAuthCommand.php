@@ -27,7 +27,9 @@ class PesapalAuthCommand extends Command
         if($response->ok()) {
             PesapalToken::create([
                 'access_token' => $response->json(key: 'token'),
-                'expires_at'   => Carbon::parse(time: $response->json(key: 'expiryDate'), tz: 'UTC')
+                // The 'expiryDate' is in UTC timezone, so it is first parsed with the UTC timezone.
+                // Then, the timezone is converted to the application's timezone using the 'tz' method.
+                'expires_at' => Carbon::parse(time: $response->json(key: 'expiryDate'), tz: 'UTC')->tz(config(key: 'app.timezone'))
             ]);
 
             $this->comment(string: 'A fresh access token has been retrieved and saved to the database.');
