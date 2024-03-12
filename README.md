@@ -30,14 +30,14 @@ composer require artisanelevated/laravel-pesapal
 Publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-pesapal-migrations"
+php artisan vendor:publish --tag="pesapal-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-pesapal-config"
+php artisan vendor:publish --tag="pesapal-config"
 ```
 
 Update your environment variables in your application.
