@@ -24,13 +24,16 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app): void
     {
+        config()->set('app.key', 'base64:E3SoAOQeMq0UyI7aBZzBPTSAXqp485oM6xqxOtvKhDA=');
         config()->set('database.default', 'testing');
+        // @see https://developer.pesapal.com/api3-demo-keys.txt
+        config()->set('pesapal.pesapal_live', false);
+        config()->set('pesapal.consumer_key', 'qkio1BGGYAXTu2JOfm7XSXNruoZsrqEW');
+        config()->set('pesapal.consumer_secret', 'osGQ364R49cXKeOYSpaOnT++rHs=');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-pesapal_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_pesapal_tokens_table.php.stub';
         $migration->up();
-        */
     }
 }
