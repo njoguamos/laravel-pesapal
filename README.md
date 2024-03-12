@@ -70,7 +70,7 @@ class Kernel extends ConsoleKernel
     {
         # Other scheduled commands
         $schedule->command('pesapal:auth')->everyFourMinutes();
-        $schedule->command('model:prune')->daily();
+        $schedule->command('model:prune')->everyFiveMinutes();
     }
 }
 ```
@@ -78,7 +78,7 @@ class Kernel extends ConsoleKernel
 ```php
  # Laravel 11 -> routes/console.php
 Schedule::call('pesapal:auth')->everyFourMinutes();
-Schedule::call('model:prune')->everyFourMinutes();
+Schedule::call('model:prune')->everyFiveMinutes();
 ```
 
 ## Testing
