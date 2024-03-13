@@ -5,8 +5,9 @@
 # A Laravel package for interacting with Pesapal API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/artisanelevated/laravel-pesapal/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/artisanelevated/laravel-pesapal/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+![GitHub Actions Test Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/run-tests.yml?logo=github&label=Tests)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/fix-php-code-style-issues.yml?logo=github&label=Code%20Style)
+![GitHub Actions PHPStan Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/phpstan.yml?logo=github&label=PHPStan)
 [![Total Downloads](https://img.shields.io/packagist/dt/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
 
 - [] TODO: Add a description of the package
