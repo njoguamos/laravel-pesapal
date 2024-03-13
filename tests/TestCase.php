@@ -34,7 +34,7 @@ class TestCase extends Orchestra
         config()->set('pesapal.consumer_key', 'qkio1BGGYAXTu2JOfm7XSXNruoZsrqEW');
         config()->set('pesapal.consumer_secret', 'osGQ364R49cXKeOYSpaOnT++rHs=');
 
-        $migration = include __DIR__.'/../database/migrations/create_pesapal_tokens_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_pesapal_tables.php.stub';
         $migration->up();
     }
 }

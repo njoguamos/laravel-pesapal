@@ -81,6 +81,43 @@ Schedule::call('pesapal:auth')->everyFourMinutes();
 Schedule::call('model:prune')->everyFiveMinutes();
 ```
 
+You can also call the `createToken' in `Pesapal` class directly to generate the `access_token`. The method will return null or an new `PesapalToken` instance.
+
+```php
+use ArtisanElevated\Pesapal\Pesapal;
+
+$token = Pesapal::createToken();
+
+# $token->access_token -> eyJhbGciOiJIUzI1NiIs...6pVj1_DS37ghMGQ
+# $token->expires_at -> Carbon\Carbon instance
+````
+
+### Create Instant Payment Notification.
+
+To create an instant payment notification, you can use the `createIpn` method in the `Pesapal` class. The method will return an instance of `PesapalIpn` or null if the request fails.
+
+> **info** Ensure that that your `pesapal_tokens` table as an `access_token` that is not expired.
+
+```php
+use ArtisanElevated\Pesapal\Pesapal;
+
+$ipn = Pesapal::createIpn(
+    url: 'https://www.yourapp.com/ipn',
+    ipnType: IpnType::GET,
+);
+
+# $ipn->url -> https://www.yourapp.com/ipn
+# $ipn->ipn_id -> e32182ca-0983-4fa0-91bc-c3bb813ba750
+# $ipn->type -> GET
+# $ipn->status -> Active
+````
+
+> **info** The url should be a public url that can be accessed by pesapal.com. The `ipnType` can be either `IpnType::GET` or `IpnType::POST`.
+
+You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
+
+> **info** Ensure that that your `pesapal_tokens` table as an `access_token` that is not expired. Of course, if you scheduled the `pesapal:auth` command, you should not worry about the `access_token` being expired.
+
 ## Testing
 
 > **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. This ensures the stability of the package. Where it is impossible to use real credentials, the request is mocked.
