@@ -2,31 +2,22 @@
 
 namespace ArtisanElevated\Pesapal\Connectors;
 
-use Saloon\Http\Connector;
+use ArtisanElevated\Pesapal\Models\PesapalToken;
+use Saloon\Http\Auth\TokenAuthenticator;
 
-class PesapalConnector extends Connector
+class PesapalConnector extends PesapalBaseConnector
 {
-    public string $baseUrl;
+    public string $token;
 
     public function __construct()
     {
-        if (config(key: 'pesapal.pesapal_live')) {
-            $this->baseUrl = config(key: 'pesapal.base_url.live');
-        } else {
-            $this->baseUrl = config(key: 'pesapal.base_url.staging');
-        }
+        $this->token = PesapalToken::latest()->first()?->access_token;
+
+        parent::__construct();
     }
 
-    public function resolveBaseUrl(): string
+    protected function defaultAuth(): TokenAuthenticator
     {
-        return $this->baseUrl;
-    }
-
-    protected function defaultHeaders(): array
-    {
-        return [
-            'Content-Type' => 'application/json',
-            'Accept'       => 'application/json',
-        ];
+        return new TokenAuthenticator($this->token);
     }
 }

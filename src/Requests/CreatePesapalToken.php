@@ -7,7 +7,7 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Body\HasJsonBody;
 
-class GetPesapalToken extends Request implements HasBody
+class CreatePesapalToken extends Request implements HasBody
 {
     use HasJsonBody;
 

@@ -4,7 +4,6 @@ namespace ArtisanElevated\Pesapal\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\MassPrunable;
@@ -31,11 +30,6 @@ class PesapalToken extends Model
         'expires_at'   => 'datetime',
         'access_token' => 'encrypted'
     ];
-
-    public function bearer(): Attribute
-    {
-        return new Attribute(get: fn () => "Bearer {$this->access_token}");
-    }
 
     public function prunable(): Builder
     {

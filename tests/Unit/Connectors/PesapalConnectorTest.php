@@ -1,28 +1,16 @@
 <?php
 
 use ArtisanElevated\Pesapal\Connectors\PesapalConnector;
+use ArtisanElevated\Pesapal\Models\PesapalToken;
 
-it(description: 'returns correct base url', closure: function (bool $mode, string $baseUrl) {
-    config()->set(key: 'pesapal.pesapal_live', value: $mode);
+it(description: 'sets `Bearer token` authentication header from database` ', closure: function () {
+    $token = PesapalToken::factory()->create();
 
     $connector = new PesapalConnector();
 
-    expect(value: $connector->resolveBaseUrl())->toBe(expected: $baseUrl);
-})->with([
-    'live'    => [true, 'https://pay.pesapal.com/v3'],
-    'staging' => [false, 'https://cybqa.pesapal.com/pesapalv3'],
-]);
-
-it(description: 'sets `Accept` header to application/json', closure: function () {
-    $connector = new PesapalConnector();
-
-    expect(value: $connector->headers()->get(key: 'Accept'))->toBe(expected: 'application/json');
+    expect(value: $connector->getAuthenticator()->token)->toBe(expected: $token->access_token)
+    ->and(value: $connector->getAuthenticator()->prefix)->toBe(expected: 'Bearer');
 });
 
-it(description: 'sets `Content-Type` header to application/json', closure: function () {
-    $connector = new PesapalConnector();
-
-    expect(value: $connector->headers()->get(key: 'Content-Type'))->toBe(expected: 'application/json');
-});
-
-it(description: 'throws an exception when invalid live mode is provided')->todo();
+it(description: 'throws an exception when token is empty')->todo();
+it(description: 'throws an exception when token is expired')->todo();
