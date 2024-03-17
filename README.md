@@ -1,6 +1,6 @@
 > **warning** This package is still under development and is not ready for use in production. Please do not use it in production until this warning is removed.
 
-![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=NjoguAmos%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=njoguamos%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 # Laravel 10+ package for interacting with Pesapal API
 
@@ -125,7 +125,7 @@ You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
 
 ## Testing
 
-> **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. This ensures the stability of the package. Where it is impossible to use real credentials, the request is mocked.
+> **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. This ensures the stability of the package. Where it is impossible to use real credentials, the request is mocked. Therefore you must be connected to the internet to run the some of the tests.
 
 ```bash
 composer test
