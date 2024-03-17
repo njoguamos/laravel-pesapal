@@ -2,7 +2,7 @@
     "name": "njoguamos/laravel-pesapal",
     "description": "A Laravel package for interacting with https://www.pesapal.com api",
     "keywords": [
-        
+
         "laravel",
         "pesapal",
         "payment"
