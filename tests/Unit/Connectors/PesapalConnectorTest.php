@@ -1,7 +1,7 @@
 <?php
 
-use ArtisanElevated\Pesapal\Connectors\PesapalConnector;
-use ArtisanElevated\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Connectors\PesapalConnector;
+use NjoguAmos\Pesapal\Models\PesapalToken;
 
 it(description: 'sets `Bearer token` authentication header from database` ', closure: function () {
     $token = PesapalToken::factory()->create();

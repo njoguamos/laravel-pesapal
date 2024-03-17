@@ -1,13 +1,13 @@
 {
-    "name": "artisanelevated/laravel-pesapal",
+    "name": "njoguamos/laravel-pesapal",
     "description": "A Laravel package for interacting with https://www.pesapal.com api",
     "keywords": [
-        "Artisan Elevated",
+        
         "laravel",
         "pesapal",
         "payment"
     ],
-    "homepage": "https://github.com/artisanelevated/laravel-pesapal",
+    "homepage": "https://github.com/njoguamos/laravel-pesapal",
     "license": "MIT",
     "authors": [
         {
@@ -36,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "ArtisanElevated\\Pesapal\\": "src/",
-            "ArtisanElevated\\Pesapal\\Database\\Factories\\": "database/factories/"
+            "NjoguAmos\\Pesapal\\": "src/",
+            "NjoguAmos\\Pesapal\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ArtisanElevated\\Pesapal\\Tests\\": "tests/",
+            "NjoguAmos\\Pesapal\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -74,10 +74,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ArtisanElevated\\Pesapal\\PesapalServiceProvider"
+                "NjoguAmos\\Pesapal\\PesapalServiceProvider"
             ],
             "aliases": {
-                "Pesapal": "ArtisanElevated\\Pesapal\\Facades\\Pesapal"
+                "Pesapal": "NjoguAmos\\Pesapal\\Facades\\Pesapal"
             }
         }
     },

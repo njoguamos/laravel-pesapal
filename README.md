@@ -1,14 +1,14 @@
 > **warning** This package is still under development and is not ready for use in production. Please do not use it in production until this warning is removed.
 
-![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=artisanelevated%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
+![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=NjoguAmos%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
-# A Laravel package for interacting with Pesapal API
+# Laravel 10+ package for interacting with Pesapal API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
-![GitHub Actions Test Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/run-tests.yml?logo=github&label=Tests)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/fix-php-code-style-issues.yml?logo=github&label=Code%20Style)
-![GitHub Actions PHPStan Status](https://img.shields.io/github/actions/workflow/status/artisanelevated/laravel-pesapal/phpstan.yml?logo=github&label=PHPStan)
-[![Total Downloads](https://img.shields.io/packagist/dt/artisanelevated/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/artisanelevated/laravel-pesapal)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-pesapal)
+![GitHub Actions Test Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-pesapal/run-tests.yml?logo=github&label=Tests)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-pesapal/fix-php-code-style-issues.yml?logo=github&label=Code%20Style)
+![GitHub Actions PHPStan Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-pesapal/phpstan.yml?logo=github&label=PHPStan)
+[![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/NjoguAmos/laravel-pesapal)
 
 - [] TODO: Add a description of the package
 
@@ -25,8 +25,12 @@
 You can install the package via composer:
 
 ```bash
-composer require artisanelevated/laravel-pesapal
+composer require njogamos/laravel-pesapal
 ```
+
+This packages comes with the following tables
+- `pesapal_tokens` - to store the `access_token` and `expires_at` for the Pesapal API
+- `pesapal_ipns` - to store the Instant Payment Notifications
 
 Publish and run the migrations with:
 
@@ -85,7 +89,7 @@ Schedule::call('model:prune')->everyFiveMinutes();
 You can also call the `createToken' in `Pesapal` class directly to generate the `access_token`. The method will return null or an new `PesapalToken` instance.
 
 ```php
-use ArtisanElevated\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\Pesapal;
 
 $token = Pesapal::createToken();
 
@@ -100,7 +104,7 @@ To create an instant payment notification, you can use the `createIpn` method in
 > **info** Ensure that that your `pesapal_tokens` table as an `access_token` that is not expired.
 
 ```php
-use ArtisanElevated\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\Pesapal;
 
 $ipn = Pesapal::createIpn(
     url: 'https://www.yourapp.com/ipn',

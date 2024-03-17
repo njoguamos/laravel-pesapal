@@ -1,8 +1,8 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Connectors;
+namespace NjoguAmos\Pesapal\Connectors;
 
-use ArtisanElevated\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Models\PesapalToken;
 use Saloon\Http\Auth\TokenAuthenticator;
 
 class PesapalConnector extends PesapalBaseConnector

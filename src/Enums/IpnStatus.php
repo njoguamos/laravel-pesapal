@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Enums;
+namespace NjoguAmos\Pesapal\Enums;
 
 enum IpnStatus: int
 {

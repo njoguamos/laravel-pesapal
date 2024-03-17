@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Connectors;
+namespace NjoguAmos\Pesapal\Connectors;
 
 use Saloon\Http\Connector;
 

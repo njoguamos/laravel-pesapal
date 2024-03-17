@@ -1,6 +1,6 @@
 <?php
 
-use ArtisanElevated\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Models\PesapalToken;
 
 it(description: 'can get access token from pesapal and save to database', closure: function () {
     $this->artisan(command: 'pesapal:auth')

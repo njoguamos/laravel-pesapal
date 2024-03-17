@@ -1,5 +1,5 @@
 <?php
 
-use ArtisanElevated\Pesapal\Tests\TestCase;
+use NjoguAmos\Pesapal\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

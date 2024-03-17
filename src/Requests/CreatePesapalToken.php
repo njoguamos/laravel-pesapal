@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Requests;
+namespace NjoguAmos\Pesapal\Requests;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;

@@ -1,8 +1,8 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Commands;
+namespace NjoguAmos\Pesapal\Commands;
 
-use ArtisanElevated\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\Pesapal;
 use Illuminate\Console\Command;
 use JsonException;
 use Saloon\Exceptions\Request\FatalRequestException;

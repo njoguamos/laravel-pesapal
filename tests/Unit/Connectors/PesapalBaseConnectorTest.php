@@ -1,6 +1,6 @@
 <?php
 
-use ArtisanElevated\Pesapal\Connectors\PesapalBaseConnector;
+use NjoguAmos\Pesapal\Connectors\PesapalBaseConnector;
 
 it(description: 'returns correct base url', closure: function (bool $mode, string $baseUrl) {
     config()->set(key: 'pesapal.pesapal_live', value: $mode);

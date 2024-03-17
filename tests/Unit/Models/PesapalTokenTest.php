@@ -1,6 +1,6 @@
 <?php
 
-use ArtisanElevated\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Models\PesapalToken;
 
 it(description: 'can encrypts access_token when saving to database', closure: function () {
     $token = PesapalToken::factory()->create();
