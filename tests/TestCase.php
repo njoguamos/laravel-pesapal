@@ -1,10 +1,10 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Tests;
+namespace NjoguAmos\Pesapal\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ArtisanElevated\Pesapal\PesapalServiceProvider;
+use NjoguAmos\Pesapal\PesapalServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ArtisanElevated\\Pesapal\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'NjoguAmos\\Pesapal\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Database\Factories;
+namespace NjoguAmos\Pesapal\Database\Factories;
 
-use ArtisanElevated\Pesapal\Enums\IpnType;
-use ArtisanElevated\Pesapal\Models\PesapalIpn;
+use NjoguAmos\Pesapal\Enums\IpnType;
+use NjoguAmos\Pesapal\Models\PesapalIpn;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PesapalIpnFactory extends Factory

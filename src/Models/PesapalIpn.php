@@ -1,9 +1,9 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Models;
+namespace NjoguAmos\Pesapal\Models;
 
-use ArtisanElevated\Pesapal\Enums\IpnStatus;
-use ArtisanElevated\Pesapal\Enums\IpnType;
+use NjoguAmos\Pesapal\Enums\IpnStatus;
+use NjoguAmos\Pesapal\Enums\IpnType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 

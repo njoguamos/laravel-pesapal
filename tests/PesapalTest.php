@@ -1,9 +1,9 @@
 <?php
 
-use ArtisanElevated\Pesapal\Enums\IpnType;
-use ArtisanElevated\Pesapal\Models\PesapalIpn;
-use ArtisanElevated\Pesapal\Models\PesapalToken;
-use ArtisanElevated\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\Enums\IpnType;
+use NjoguAmos\Pesapal\Models\PesapalIpn;
+use NjoguAmos\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Pesapal;
 
 it(description: 'can get access token from pesapal and save to database', closure: function () {
     Pesapal::createToken();

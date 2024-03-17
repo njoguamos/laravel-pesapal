@@ -1,8 +1,8 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Requests;
+namespace NjoguAmos\Pesapal\Requests;
 
-use ArtisanElevated\Pesapal\Enums\IpnType;
+use NjoguAmos\Pesapal\Enums\IpnType;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

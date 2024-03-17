@@ -1,8 +1,8 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Database\Factories;
+namespace NjoguAmos\Pesapal\Database\Factories;
 
-use ArtisanElevated\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Models\PesapalToken;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PesapalTokenFactory extends Factory

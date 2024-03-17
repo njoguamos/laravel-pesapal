@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Models;
+namespace NjoguAmos\Pesapal\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;

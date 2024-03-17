@@ -1,11 +1,11 @@
 <?php
 
-namespace ArtisanElevated\Pesapal;
+namespace NjoguAmos\Pesapal;
 
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ArtisanElevated\Pesapal\Commands\PesapalAuthCommand;
+use NjoguAmos\Pesapal\Commands\PesapalAuthCommand;
 
 class PesapalServiceProvider extends PackageServiceProvider
 {
@@ -25,7 +25,7 @@ class PesapalServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     ->publishMigrations()
-                    ->askToStarRepoOnGitHub('artisanelevated/laravel-pesapal');
+                    ->askToStarRepoOnGitHub('NjoguAmos/laravel-pesapal');
             });
     }
 }

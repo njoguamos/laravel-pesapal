@@ -1,16 +1,16 @@
 <?php
 
-namespace ArtisanElevated\Pesapal\Facades;
+namespace NjoguAmos\Pesapal\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \ArtisanElevated\Pesapal\Pesapal
+ * @see \NjoguAmos\Pesapal\Pesapal
  */
 class Pesapal extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \ArtisanElevated\Pesapal\Pesapal::class;
+        return \NjoguAmos\Pesapal\Pesapal::class;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use ArtisanElevated\Pesapal\Requests\CreatePesapalToken;
+use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
 
 it(description: 'returns correct endpoint', closure: function () {
     $request = new CreatePesapalToken();

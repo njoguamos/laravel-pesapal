@@ -1,14 +1,14 @@
 <?php
 
-namespace ArtisanElevated\Pesapal;
+namespace NjoguAmos\Pesapal;
 
-use ArtisanElevated\Pesapal\Connectors\PesapalBaseConnector;
-use ArtisanElevated\Pesapal\Connectors\PesapalConnector;
-use ArtisanElevated\Pesapal\Enums\IpnType;
-use ArtisanElevated\Pesapal\Models\PesapalIpn;
-use ArtisanElevated\Pesapal\Models\PesapalToken;
-use ArtisanElevated\Pesapal\Requests\CreatePesapalIpn;
-use ArtisanElevated\Pesapal\Requests\CreatePesapalToken;
+use NjoguAmos\Pesapal\Connectors\PesapalBaseConnector;
+use NjoguAmos\Pesapal\Connectors\PesapalConnector;
+use NjoguAmos\Pesapal\Enums\IpnType;
+use NjoguAmos\Pesapal\Models\PesapalIpn;
+use NjoguAmos\Pesapal\Models\PesapalToken;
+use NjoguAmos\Pesapal\Requests\CreatePesapalIpn;
+use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
 use Carbon\Carbon;
 use JsonException;
 use Saloon\Exceptions\Request\FatalRequestException;
