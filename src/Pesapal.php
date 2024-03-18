@@ -37,7 +37,7 @@ class Pesapal
                 'access_token' => $response->json(key: 'token'),
                 // The 'expiryDate' is in UTC timezone, so it is first parsed with the UTC timezone.
                 // Then, the timezone is converted to the application's timezone using the 'tz' method.
-                'expires_at' => Carbon::parse(time: $response->json(key: 'expiryDate'), tz: 'UTC')->tz(config(key: 'app.timezone'))
+                'expires_at' => Carbon::parse($response->json(key: 'expiryDate'), 'UTC')->tz(config(key: 'app.timezone'))
             ]);
         }
 
@@ -68,7 +68,7 @@ class Pesapal
                     'status' => $response->json(key: 'ipn_status'),
                     // The 'created_date' is in UTC timezone, so it is first parsed with the UTC timezone.
                     // Then, the timezone is converted to the application's timezone using the 'tz' method.
-                    'created_at' => Carbon::parse(time: $response->json(key: 'created_date'), tz: 'UTC')->tz(config(key: 'app.timezone'))
+                    'created_at' => Carbon::parse($response->json(key: 'created_date'), 'UTC')->tz(config(key: 'app.timezone'))
                 ]
             );
         }
