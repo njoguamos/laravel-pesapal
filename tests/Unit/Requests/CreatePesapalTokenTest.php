@@ -17,8 +17,8 @@ it(description: 'returns default body with correct consumer key and secret', clo
 
     $request = new CreatePesapalToken();
 
-    expect(value: $request->body()->get(key: 'consumer_key'))->toBe(expected: $consumerKey);
-    expect(value: $request->body()->get(key: 'consumer_secret'))->toBe(expected: $consumerSecret);
+    expect(value: $request->body()->get(key: 'consumer_key'))->toBe(expected: $consumerKey)
+        ->and(value: $request->body()->get(key: 'consumer_secret'))->toBe(expected: $consumerSecret);
 });
 
 it(description: 'throws an exception when consumer key and secret are not set')->todo();

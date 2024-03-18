@@ -1,0 +1,19 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Mon, 18 Mar 2024 06:54:26 GMT",
+        "Content-Type": "application\/json; charset=utf-8",
+        "Content-Length": "2",
+        "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-AspNet-Version": "4.0.30319",
+        "X-Powered-By": "ASP.NET",
+        "CF-Cache-Status": "DYNAMIC",
+        "Set-Cookie": "__cf_bm=hhTrLH1HmrWrYfB7VQ_pyh_Gynu3tJb74_xxW6JVswA-1710744866-1.0.1.1-RbzPLihr0iU.DCy9V60sgxhMG4rqgTfdHgVBTQ1RB71OQXydh98Qf8jmaGjx5Ha22v86XfrjAXWKIQ48wSOtHg; path=\/; expires=Mon, 18-Mar-24 07:24:26 GMT; domain=.pesapal.com; HttpOnly; Secure; SameSite=None",
+        "Server": "cloudflare",
+        "CF-RAY": "86634fb869830372-NBO"
+    },
+    "data": "[]"
+}
