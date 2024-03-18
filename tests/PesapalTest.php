@@ -69,8 +69,6 @@ it(description: 'can create an order', closure: function () {
         billingAddress: $billingAddress,
     );
 
-    dd($order);
-
     expect(value: $order['order_tracking_id'])->not->toBeEmpty()
     ->and(value: $order['merchant_reference'])->not->toBeEmpty()
     ->and(value: $order['redirect_url'])->not->toBeEmpty()
