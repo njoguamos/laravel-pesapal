@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $url
  * @property IpnType $type
  * @property string $ipn_id
+ * @property IpnStatus $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */

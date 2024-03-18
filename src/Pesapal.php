@@ -63,11 +63,8 @@ class Pesapal
             return $response;
         }
 
-        return PesapalIpn::updateOrCreate(
+        return PesapalIpn::create(
             attributes: [
-                'url' => $response->json(key: 'url'),
-            ],
-            values: [
                 'ipn_id' => $response->json(key: 'ipn_id'),
                 'url'    => $response->json(key: 'url'),
                 'type'   => $ipnType,
