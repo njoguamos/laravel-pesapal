@@ -25,7 +25,7 @@
 You can install the package via composer:
 
 ```bash
-composer require njogamos/laravel-pesapal
+composer require njoguamos/laravel-pesapal
 ```
 
 This packages comes with the following tables
