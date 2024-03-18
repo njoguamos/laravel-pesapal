@@ -5,18 +5,18 @@ on: pull_request
 jobs:
   test:
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 5
+    timeout-minutes: 10
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         php: [8.3, 8.2, 8.1]
         laravel: [10.*]
-        stability: [prefer-stable, prefer-lowest]
+        stability: [prefer-stable]
         include:
           - laravel: 10.*
             testbench: 8.*
-            carbon: ^2.63
+            carbon: ^2.67
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 

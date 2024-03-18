@@ -97,7 +97,7 @@ $token = Pesapal::createToken();
 # $token->expires_at -> Carbon\Carbon instance
 ````
 
-### Create Instant Payment Notification.
+### Create Instant Payment Notification
 
 To create an instant payment notification, you can use the `createIpn` method in the `Pesapal` class. The method will return an instance of `PesapalIpn` or null if the request fails.
 
@@ -122,6 +122,69 @@ $ipn = Pesapal::createIpn(
 You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
 
 > **info** Ensure that that your `pesapal_tokens` table as an `access_token` that is not expired. Of course, if you scheduled the `pesapal:auth` command, you should not worry about the `access_token` being expired.
+
+### Get Registered IPNs Endpoint
+
+There are two ways to get the registered IPNs. 
+
+1. You can use the `getIpns` method in the `Pesapal` class to get a IPN from Pesapal API.
+
+```php
+use NjoguAmos\Pesapal\Pesapal;
+
+$response = Pesapal::getIpns();
+```
+
+```json
+[
+    {
+        "url": "https://www.myapplication.com/ipn",
+        "created_date": "2022-03-03T17:29:03.7208266Z",
+        "ipn_id": "e32182ca-0983-4fa0-91bc-c3bb813ba750",
+        "error": null,
+        "status": "200"
+    },
+    {
+        "url": "https://ipn.myapplication.com/application2",
+        "created_date": "2021-12-05T04:23:45.5509243Z",
+        "ipn_id": "c3bb813ba750-0983-4fa0-91bc-e32182ca",
+        "error": null,
+        "status": "200"
+    }
+]
+```
+
+2. or get the IPNs from the database.
+
+```php
+use NjoguAmos\Pesapal\Models\PesapalIpn;
+
+$ips = PesapalIpn::all();
+```
+
+
+```php
+[ 
+    [
+    "id" => 1
+    "url" => "http://kautzer.com/omnis-ut-qui-illo-id-laborum-numquam"
+    "ipn_id" => "767e3275-d504-41a0-920a-dd752aafb5ac"
+    "type" => 0
+    "status" => 1
+    "created_at" => "2024-03-18T08:10:32.000000Z"
+    "updated_at" => "2024-03-18T05:10:32.000000Z"
+  ],
+  [
+    "id" => 2
+    "url" => "http://www.cole.org/qui-fugiat-accusamus-molestiae-aspernatur-sequi-eum-non-quae.html"
+    "ipn_id" => "de07604f-c06b-4ccf-9cb5-dd75aaaff99f"
+    "type" => 0
+    "status" => 1
+    "created_at" => "2024-03-18T08:10:33.000000Z"
+    "updated_at" => "2024-03-18T05:10:33.000000Z"
+  ]
+]
+```
 
 ## Testing
 
