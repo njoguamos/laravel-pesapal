@@ -5,11 +5,6 @@ namespace NjoguAmos\Pesapal\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use NjoguAmos\Pesapal\PesapalServiceProvider;
-use NjoguAmos\Pesapal\Requests\CreatePesapalIpn;
-use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
-use NjoguAmos\Pesapal\Requests\GetPesapalIpns;
-use Saloon\Http\Faking\MockClient;
-use Saloon\Http\Faking\MockResponse;
 
 class TestCase extends Orchestra
 {
@@ -20,12 +15,6 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'NjoguAmos\\Pesapal\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
-
-        MockClient::global(mockData: [
-            CreatePesapalToken::class => MockResponse::fixture(name: 'CreatePesapalToken'),
-            CreatePesapalIpn::class   => MockResponse::fixture(name: 'CreatePesapalIpn'),
-            GetPesapalIpns::class     => MockResponse::fixture(name: 'GetPesapalIpns'),
-        ]);
     }
 
     protected function getPackageProviders($app): array
