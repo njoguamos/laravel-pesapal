@@ -10,15 +10,15 @@
 ![GitHub Actions PHPStan Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-pesapal/phpstan.yml?logo=github&label=PHPStan)
 [![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/NjoguAmos/laravel-pesapal)
 
-- [] TODO: Add a description of the package
+This package provides a way of interacting with Pesapal API. It provides a way of generating `access_token` and storing Instant Payment Notifications (IPNs) in the database. It also provides a way of submitting order requests and checking the status of a transaction.
 
-## Support us
-
-- [] TODO: Add a link to the support page
 
 ## Why use this package
 - To provide a way of generating Pesapal api `access_token` which normally expires after 5 minutes
 - Offer a gateway to interacting with Pesapal v3 API
+- Provide a way of storing Instant Payment Notifications (IPNs) in the database
+- Saves you time from writing the same code over and over again
+
 
 ## Installation
 
@@ -289,27 +289,33 @@ use NjoguAmos\Pesapal\Pesapal;
 
 You should be able to get response details for the `$transaction` DTO
 
-| Property                                   | Description                                                                     | Sample response                                                                                                        |
-|--------------------------------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `$transaction->payment_method`             | payment method used                                                             | `Visa`, `MPESA`, `""`                                                                                                  |
-| `$transaction->amount`                     | order amount                                                                    | `1200`                                                                                                                 |
-| `$transaction->created_date`               | payment date in `UTC`                                                           | `2022-04-30T07:41:09.763`                                                                                              |
-| `$transaction->confirmation_code`          | payment provider code                                                           | `SCI5FB84RD`                                                                                                           |
-| `$transaction->payment_status_description` | transaction status                                                              | `INVALID`, `FAILED`, `COMPLETED` or `REVERSED`.                                                                        |
-| `$transaction->description`                | payment status description                                                      | `"Unable to Authorize Transaction.Kindly contact your bank for assistance"`.                                           |
-| `$transaction->message`                    | whether transaction was processed successfully or not.                          | `"Request processed successfully"`.                                                                                    |
-| `$transaction->payment_account`            | Masked card number or phone number used during payment                          | `0700*****8`, `"`                                                                                                      |
-| `$transaction->call_back_url`              | Payment redirect url                                                            | `https://test.com/?OrderTrackingId=7e6b62d9-883e-440f-a63e-e1105bbfadc3&OrderMerchantReference=1515111111`             |
-| `$transaction->status_code`                | Payment status description                                                      | `0` - INVALID, `1` - COMPLETED, `2` - FAILED or `3` - REVERSED                                                         |
-| `$transaction->merchant_reference`         | Unique ID provided during SubmitOrderRequest                                    | `1515111111`, `7e6b62d9-883e-440f-a63e-e1105bbfadc`                                                                    |
-| `$transaction->currency`                   | Transaction currency                                                            | `KES`, `USD`                                                                                                           |
-| `$transaction->status`                     | HTTP status code                                                                | `200`, `500`                                                                                                           |
-| `$transaction->error`                      | An error object containing `error_type`, `code`, `message` and `call_back_url`. | `{ "error_type": 'api_error, "code": 'payment_details_not_found, "message": 'Pending Payment, "call_back_url": null }` |
+| `$transaction` Property      | Description                                            | Sample response                                                                                                        |
+|------------------------------|--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `payment_method`             | payment method used                                    | `Visa`, `MPESA`, `""`                                                                                                  |
+| `amount`                     | order amount                                           | `1200`                                                                                                                 |
+| `created_date`               | payment date in `UTC`                                  | `2022-04-30T07:41:09.763`                                                                                              |
+| `confirmation_code`          | payment provider code                                  | `SCI5FB84RD`                                                                                                           |
+| `payment_status_description` | transaction status                                     | `INVALID`, `FAILED`, `COMPLETED` or `REVERSED`.                                                                        |
+| `description`                | payment status description                             | `"Unable to Authorize Transaction.Kindly contact your bank for assistance"`.                                           |
+| `message`                    | whether transaction was processed successfully or not. | `"Request processed successfully"`.                                                                                    |
+| `payment_account`            | Masked card number or phone number used during payment | `0700*****8`, `"`                                                                                                      |
+| `call_back_url`              | Payment redirect url                                   | `https://test.com/?OrderTrackingId=7e6b62d9-883e-440f-a63e-e1105bbfadc3&OrderMerchantReference=1515111111`             |
+| `status_code`                | Payment status description                             | `0` - INVALID, `1` - COMPLETED, `2` - FAILED or `3` - REVERSED                                                         |
+| `merchant_reference`         | Unique ID provided during SubmitOrderRequest           | `1515111111`, `7e6b62d9-883e-440f-a63e-e1105bbfadc`                                                                    |
+| `currency`                   | Transaction currency                                   | `KES`, `USD`                                                                                                           |
+| `status`                     | HTTP status code                                       | `200`, `500`                                                                                                           |
+| `error`                      | An error object                                        | `{ "error_type": 'api_error, "code": 'payment_details_not_found, "message": 'Pending Payment, "call_back_url": null }` |
 
+
+### 6. Recurring / Subscription Based Payments
+- [ ] TODO: Add documentation for recurring payments
+
+### 7. Refund Request
+- [ ] TODO: Add documentation for refund request
 
 ## Testing
 
-> **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. This ensures the stability of the package. Where it is impossible to use real credentials, the request is mocked. Therefore you must be connected to the internet to run the some of the tests.
+> **Info** Where possible, the tests uses real [sandbox credentials](https://developer.pesapal.com/api3-demo-keys.txt), and as such the request is not mocked. The resulting response is saved at `tests/Fixtures` and used in future tests. Where it is impossible to use real credentials, the request is mocked. You can recreate the fixtures by deleting `tests/Fixtures` and running the tests.
 
 ```bash
 composer test
