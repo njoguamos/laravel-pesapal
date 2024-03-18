@@ -53,9 +53,11 @@ PESAPAL_CONSUMER_KEY=
 PESAPAL_CONSUMER_SECRET=
 ```
 
+
 ## Usage
 
-### Generate `access_token`
+
+### 1. Generate `access_token`
 
 To generate an `access_token` you can run the following command:
 
@@ -93,11 +95,20 @@ use NjoguAmos\Pesapal\Pesapal;
 
 $token = Pesapal::createToken();
 
-# $token->access_token -> eyJhbGciOiJIUzI1NiIs...6pVj1_DS37ghMGQ
-# $token->expires_at -> Carbon\Carbon instance
+// $token in an Instance of PesapalToken Eloquent Model
+$data = $token->toArray();
 ````
 
-### Create Instant Payment Notification
+Sample output
+
+```php
+[
+ 'access_token' => "eyJhbGciOiJIUzI1NiIs...6pVj1_DS37ghMGQ",
+ 'expires_at' => Carbon\Carbon instance
+]
+```
+
+### 2. Create Instant Payment Notification
 
 To create an instant payment notification, you can use the `createIpn` method in the `Pesapal` class. The method will return an instance of `PesapalIpn` or null if the request fails.
 
@@ -111,11 +122,20 @@ $ipn = Pesapal::createIpn(
     ipnType: IpnType::GET,
 );
 
-# $ipn->url -> https://www.yourapp.com/ipn
-# $ipn->ipn_id -> e32182ca-0983-4fa0-91bc-c3bb813ba750
-# $ipn->type -> GET
-# $ipn->status -> Active
+// $ipn is an Instance of PesapalIpn Eloquent Model
+$data = $ipn->toArray();
 ````
+
+Sample output
+
+```php
+[
+    'url' => 'https://www.yourapp.com/ipn'
+    'ipn_id' => 'e32182ca-0983-4fa0-91bc-c3bb813ba750'
+    'type' => 'GET'
+    'status' => 'Active'
+]
+```
 
 > **info** The url should be a public url that can be accessed by pesapal.com. The `ipnType` can be either `IpnType::GET` or `IpnType::POST`.
 
@@ -123,7 +143,8 @@ You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
 
 > **info** Ensure that that your `pesapal_tokens` table as an `access_token` that is not expired. Of course, if you scheduled the `pesapal:auth` command, you should not worry about the `access_token` being expired.
 
-### Get Registered IPNs Endpoint
+
+### 3. Get Registered IPNs Endpoint
 
 There are two ways to get the registered IPNs. 
 
@@ -185,7 +206,8 @@ $ips = PesapalIpn::all();
 ]
 ```
 
-### Submit Order Request Endpoint
+
+### 4. Submit Order Request Endpoint
 
 To submit an order request, you can use the `createOrder` method in the `Pesapal` class. You will need to construct a DTO for `PesapalOrderData` and `PesapalAddressData` as shown below.
 
