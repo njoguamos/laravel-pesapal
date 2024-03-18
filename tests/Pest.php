@@ -13,8 +13,9 @@ use Saloon\Config;
 uses(TestCase::class)->in(__DIR__);
 
 
-MockConfig::setFixturePath('tests/Fixtures');
+MockConfig::setFixturePath(path: 'tests/Fixtures');
 Config::preventStrayRequests();
+//MockConfig::throwOnMissingFixtures();
 
 MockClient::global(mockData: [
     CreatePesapalToken::class => MockResponse::fixture(name: 'CreatePesapalToken'),
