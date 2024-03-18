@@ -25,7 +25,7 @@
     },
     "require-dev": {
         "laravel/pint": "^1.14",
-        "nunomaduro/collision": "^v7.10",
+        "nunomaduro/collision": "^v7.10 | ^v8.1.1",
         "larastan/larastan": "^2.9",
         "orchestra/testbench": "^8.22 | ^9.0",
         "pestphp/pest": "^2.34",
