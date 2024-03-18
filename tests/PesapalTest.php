@@ -5,6 +5,8 @@ use NjoguAmos\Pesapal\DTOs\PesapalOrderData;
 use NjoguAmos\Pesapal\Enums\ISOCurrencyCode;
 use NjoguAmos\Pesapal\Enums\IpnType;
 use NjoguAmos\Pesapal\Enums\RedirectMode;
+use NjoguAmos\Pesapal\Enums\TransactionStatus;
+use NjoguAmos\Pesapal\Enums\TransactionStatusCode;
 use NjoguAmos\Pesapal\Models\PesapalIpn;
 use NjoguAmos\Pesapal\Models\PesapalToken;
 use NjoguAmos\Pesapal\Pesapal;
@@ -52,7 +54,7 @@ it(description: 'can create an order', closure: function () {
     $orderData = new PesapalOrderData(
         id: fake()->uuid(),
         currency: ISOCurrencyCode::KES,
-        amount: fake()->randomFloat(nbMaxDecimals: 2, min: 50, max: 500),
+        amount: 10.0,
         description: 'Test order',
         callbackUrl: fake()->url(),
         notificationId: PesapalIpn::latest()->first()->ipn_id,
@@ -72,4 +74,61 @@ it(description: 'can create an order', closure: function () {
     ->and(value: $order['redirect_url'])->not->toBeEmpty()
     ->and(value: $order['error'])->toBeNull()
     ->and(value: $order['status'])->toBe(expected: '200');
+});
+
+it(description: 'can get transaction status', closure: function () {
+    $callbackUrl = fake()->url();
+    $amount = 10.0;
+    $reference = fake()->uuid();
+
+    Pesapal::createToken();
+
+    Pesapal::createIpn(
+        url: fake()->url,
+        ipnType: IpnType::GET,
+    );
+
+    $orderData = new PesapalOrderData(
+        id: $reference,
+        currency: ISOCurrencyCode::KES,
+        amount: $amount,
+        description: 'Test order',
+        callbackUrl: $callbackUrl,
+        notificationId: PesapalIpn::latest()->first()->ipn_id,
+        cancellationUrl: fake()->url(),
+        redirectMode: RedirectMode::PARENT_WINDOW,
+    );
+
+    $billingAddress = new PesapalAddressData(phoneNumber: '0700325008');
+
+    $order = Pesapal::createOrder(
+        orderData: $orderData,
+        billingAddress: $billingAddress,
+    );
+
+    $trackingId = $order['order_tracking_id'];
+
+    $transaction = Pesapal::getTransactionStatus(
+        orderTrackingId: $trackingId,
+    );
+
+    expect(value: $transaction->amount)->toBe(expected: $amount)
+        ->and(value: $transaction->created_date)->not->toBeEmpty()
+    ->and(value: $transaction->payment_status_description)->toBe(expected: TransactionStatusCode::INVALID->name)
+    ->and(value: $transaction->call_back_url)->not->toBeEmpty()
+    ->and(value: $transaction->error->call_back_url)->not->toBeEmpty()
+    ->and(value: $transaction->message)->toBe(expected: "Request processed successfully")
+    ->and(value: $transaction->merchant_reference)->not->toBeEmpty()
+    ->and(value: $transaction->currency)->toBe(expected: ISOCurrencyCode::KES->name)
+    ->and(value: $transaction->status_code)->toBe(expected: TransactionStatusCode::INVALID->value)
+    ->and(value: $transaction->status)->toBe(expected: TransactionStatus::INCOMPLETE->value)
+    ->and(value: $transaction->payment_method)->toBeEmpty()
+    ->and(value: $transaction->description)->toBeEmpty()
+    ->and(value: $transaction->confirmation_code)->toBeEmpty()
+    ->and(value: $transaction->payment_account)->toBeEmpty()
+    ->and(value: $transaction->payment_status_code)->toBeEmpty()
+    ->and(value: $transaction->error->error_type)->toBe(expected: 'api_error')
+    ->and(value: $transaction->error->code)->toBe(expected: 'payment_details_not_found')
+    ->and(value: $transaction->error->message)->toBe(expected: 'Pending Payment');
+
 });

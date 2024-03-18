@@ -152,6 +152,7 @@ There are two ways to get the registered IPNs.
 
 ```php
 use NjoguAmos\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\Pesapal;
 
 $response = Pesapal::getIpns();
 ```
@@ -215,7 +216,14 @@ To submit an order request, you can use the `createOrder` method in the `Pesapal
 
 
 ```php
+
+use NjoguAmos\Pesapal\Enums\ISOCurrencyCode;
 use NjoguAmos\Pesapal\Enums\ISOCountryCode;
+use NjoguAmos\Pesapal\Enums\RedirectMode;
+use NjoguAmos\Pesapal\Pesapal;
+use NjoguAmos\Pesapal\DTOs\PesapalOrderData;
+use NjoguAmos\Pesapal\DTOs\PesapalAddressData;
+
 $ipnId = PesapalIpn::latest()->first()->ipn_id;
 
  $orderData = new PesapalOrderData(
@@ -263,6 +271,41 @@ If the response was successful, your response should be as follows.
 ```
 
 You can now re-direct the user to the `redirect_url` to complete the payment.
+
+
+### 5. Get Transaction Status Endpoint
+
+You can check the status of a transaction using `OrderTrackingId` issued when creating an order.
+
+```php
+use NjoguAmos\Pesapal\Pesapal;
+
+ $transaction = Pesapal::getTransactionStatus(
+    orderTrackingId: 'b945e4af-80a5-4ec1-8706-e03f8332fb04',
+);
+
+// $transaction is an instance of TransactionStatusResponse DTO
+```
+
+You should be able to get response details for the `$transaction` DTO
+
+| Property                                   | Description                                                                     | Sample response                                                                                                        |
+|--------------------------------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `$transaction->payment_method`             | payment method used                                                             | `Visa`, `MPESA`, `""`                                                                                                  |
+| `$transaction->amount`                     | order amount                                                                    | `1200`                                                                                                                 |
+| `$transaction->created_date`               | payment date in `UTC`                                                           | `2022-04-30T07:41:09.763`                                                                                              |
+| `$transaction->confirmation_code`          | payment provider code                                                           | `SCI5FB84RD`                                                                                                           |
+| `$transaction->payment_status_description` | transaction status                                                              | `INVALID`, `FAILED`, `COMPLETED` or `REVERSED`.                                                                        |
+| `$transaction->description`                | payment status description                                                      | `"Unable to Authorize Transaction.Kindly contact your bank for assistance"`.                                           |
+| `$transaction->message`                    | whether transaction was processed successfully or not.                          | `"Request processed successfully"`.                                                                                    |
+| `$transaction->payment_account`            | Masked card number or phone number used during payment                          | `0700*****8`, `"`                                                                                                      |
+| `$transaction->call_back_url`              | Payment redirect url                                                            | `https://test.com/?OrderTrackingId=7e6b62d9-883e-440f-a63e-e1105bbfadc3&OrderMerchantReference=1515111111`             |
+| `$transaction->status_code`                | Payment status description                                                      | `0` - INVALID, `1` - COMPLETED, `2` - FAILED or `3` - REVERSED                                                         |
+| `$transaction->merchant_reference`         | Unique ID provided during SubmitOrderRequest                                    | `1515111111`, `7e6b62d9-883e-440f-a63e-e1105bbfadc`                                                                    |
+| `$transaction->currency`                   | Transaction currency                                                            | `KES`, `USD`                                                                                                           |
+| `$transaction->status`                     | HTTP status code                                                                | `200`, `500`                                                                                                           |
+| `$transaction->error`                      | An error object containing `error_type`, `code`, `message` and `call_back_url`. | `{ "error_type": 'api_error, "code": 'payment_details_not_found, "message": 'Pending Payment, "call_back_url": null }` |
+
 
 ## Testing
 

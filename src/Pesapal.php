@@ -15,6 +15,7 @@ use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
 use Carbon\Carbon;
 use JsonException;
 use NjoguAmos\Pesapal\Requests\GetPesapalIpns;
+use NjoguAmos\Pesapal\Requests\GetPesapalTransactionStatus;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 
@@ -117,5 +118,19 @@ class Pesapal
         }
 
         return null;
+    }
+
+    /**
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
+    public static function getTransactionStatus(string $orderTrackingId)
+    {
+        $connector = new PesapalConnector();
+        $request = new GetPesapalTransactionStatus(orderTrackingId: $orderTrackingId);
+
+        $response = $connector->send($request);
+
+        return $response->dtoOrFail();
     }
 }
