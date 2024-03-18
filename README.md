@@ -32,14 +32,14 @@ This packages comes with the following tables
 - `pesapal_tokens` - to store the `access_token` and `expires_at` for the Pesapal API
 - `pesapal_ipns` - to store the Instant Payment Notifications
 
-Publish and run the migrations with:
+Publish and run the migrations
 
 ```bash
 php artisan vendor:publish --tag="pesapal-migrations"
 php artisan migrate
 ```
 
-You can publish the config file with:
+You can optionally publish the config file
 
 ```bash
 php artisan vendor:publish --tag="pesapal-config"
@@ -84,8 +84,11 @@ class Kernel extends ConsoleKernel
 
 ```php
  # Laravel 11 -> routes/console.php
-Schedule::call('pesapal:auth')->everyFourMinutes();
-Schedule::call('model:prune')->everyFiveMinutes();
+use Illuminate\Support\Facades\Schedule;
+use NjoguAmos\Pesapal\Models\PesapalToken;
+ 
+Schedule::command('pesapal:auth')->everyFourMinutes();
+Schedule::command('model:prune', ['--model' => [PesapalToken::class]])->everyFiveMinutes();
 ```
 
 You can also call the `createToken' in `Pesapal` class directly to generate the `access_token`. The method will return null or an new `PesapalToken` instance.
