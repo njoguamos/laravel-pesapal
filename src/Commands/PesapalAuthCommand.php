@@ -2,6 +2,7 @@
 
 namespace NjoguAmos\Pesapal\Commands;
 
+use NjoguAmos\Pesapal\Models\PesapalToken;
 use NjoguAmos\Pesapal\Pesapal;
 use Illuminate\Console\Command;
 use JsonException;
@@ -23,7 +24,7 @@ class PesapalAuthCommand extends Command
     {
         $token = Pesapal::createToken();
 
-        if($token) {
+        if($token instanceof PesapalToken) {
             $this->info(string: 'A fresh access token has been retrieved and saved to the database.');
 
             return self::SUCCESS;
