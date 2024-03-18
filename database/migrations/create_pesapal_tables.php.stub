@@ -17,7 +17,7 @@ return new class extends Migration
 
          Schema::create('pesapal_ipns', function (Blueprint $table) {
             $table->id();
-            $table->string('url')->unique();
+            $table->string('url');
             $table->uuid('ipn_id');
             $table->unsignedTinyInteger('type');
             $table->unsignedTinyInteger('status')->nullable();
