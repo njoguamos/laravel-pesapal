@@ -11,6 +11,7 @@ use NjoguAmos\Pesapal\Requests\CreatePesapalIpn;
 use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
 use Carbon\Carbon;
 use JsonException;
+use NjoguAmos\Pesapal\Requests\GetPesapalIpns;
 use Saloon\Exceptions\Request\FatalRequestException;
 use Saloon\Exceptions\Request\RequestException;
 
@@ -67,6 +68,25 @@ class Pesapal
                     'created_at' => Carbon::parse(time: $response->json(key: 'created_date'), tz: 'UTC')->tz(config(key: 'app.timezone'))
                 ]
             );
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws FatalRequestException
+     * @throws RequestException
+     * @throws JsonException
+     */
+    public static function getIpns(): ?array
+    {
+        $connector = new PesapalConnector();
+        $request = new GetPesapalIpns();
+
+        $response = $connector->send($request);
+
+        if ($response->ok()) {
+            return $response->array();
         }
 
         return null;
