@@ -4,10 +4,13 @@ namespace NjoguAmos\Pesapal;
 
 use NjoguAmos\Pesapal\Connectors\PesapalBaseConnector;
 use NjoguAmos\Pesapal\Connectors\PesapalConnector;
+use NjoguAmos\Pesapal\DTOs\PesapalAddressData;
+use NjoguAmos\Pesapal\DTOs\PesapalOrderData;
 use NjoguAmos\Pesapal\Enums\IpnType;
 use NjoguAmos\Pesapal\Models\PesapalIpn;
 use NjoguAmos\Pesapal\Models\PesapalToken;
 use NjoguAmos\Pesapal\Requests\CreatePesapalIpn;
+use NjoguAmos\Pesapal\Requests\CreatePesapalOrder;
 use NjoguAmos\Pesapal\Requests\CreatePesapalToken;
 use Carbon\Carbon;
 use JsonException;
@@ -82,6 +85,30 @@ class Pesapal
     {
         $connector = new PesapalConnector();
         $request = new GetPesapalIpns();
+
+        $response = $connector->send($request);
+
+        if ($response->ok()) {
+            return $response->array();
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws FatalRequestException
+     * @throws RequestException
+     * @throws JsonException
+     */
+    public static function createOrder(PesapalOrderData $orderData, PesapalAddressData $billingAddress): ?array
+    {
+        // @TODO: Validate the order data and billing address
+
+        $connector = new PesapalConnector();
+        $request = new CreatePesapalOrder(
+            orderData:  $orderData,
+            billingAddress:  $billingAddress
+        );
 
         $response = $connector->send($request);
 

@@ -1,0 +1,19 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Date": "Mon, 18 Mar 2024 12:16:50 GMT",
+        "Content-Type": "application\/json; charset=utf-8",
+        "Content-Length": "279",
+        "Connection": "keep-alive",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "X-AspNet-Version": "4.0.30319",
+        "X-Powered-By": "ASP.NET",
+        "CF-Cache-Status": "DYNAMIC",
+        "Set-Cookie": "__cf_bm=FP630LgFf6g4V8G91p33c2ad4YIkImWHByFRDJVEf4o-1710764210-1.0.1.1-ZZgDN_LMJqWoQf_tVPdJGUpDcH.xgVGW4u8fR13sMQZoXetE7FeapyEayJ3xZzLbgYUTjt0TM3JKmzdEtnOdWA; path=\/; expires=Mon, 18-Mar-24 12:46:50 GMT; domain=.pesapal.com; HttpOnly; Secure; SameSite=None",
+        "Server": "cloudflare",
+        "CF-RAY": "866527fb4ccb1b5a-NBO"
+    },
+    "data": "{\"order_tracking_id\":\"75f8a83a-807f-473b-8058-dd75644c56c2\",\"merchant_reference\":\"cde009d7-d663-320e-9dac-4022c86bc23f\",\"redirect_url\":\"https:\/\/cybqa.pesapal.com\/pesapaliframe\/PesapalIframe3\/Index?OrderTrackingId=75f8a83a-807f-473b-8058-dd75644c56c2\",\"error\":null,\"status\":\"200\"}"
+}

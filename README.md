@@ -162,7 +162,6 @@ use NjoguAmos\Pesapal\Models\PesapalIpn;
 $ips = PesapalIpn::all();
 ```
 
-
 ```php
 [ 
     [
@@ -185,6 +184,63 @@ $ips = PesapalIpn::all();
   ]
 ]
 ```
+
+### Submit Order Request Endpoint
+
+To submit an order request, you can use the `createOrder` method in the `Pesapal` class. You will need to construct a DTO for `PesapalOrderData` and `PesapalAddressData` as shown below.
+
+> **info** You must provide a registered `PesapalIpn`.
+
+
+```php
+use NjoguAmos\Pesapal\Enums\ISOCountryCode;
+$ipnId = PesapalIpn::latest()->first()->ipn_id;
+
+ $orderData = new PesapalOrderData(
+    id: fake()->uuid(),
+    currency: ISOCurrencyCode::KES,
+    amount: fake()->randomFloat(nbMaxDecimals: 2, min: 50, max: 500),
+    description: 'Test order',
+    callbackUrl: fake()->url(),
+    notificationId: $ipnId,
+    cancellationUrl: fake()->url(),
+    redirectMode: RedirectMode::PARENT_WINDOW,
+);
+
+// All fields are optional except either phoneNumber or emailAddress
+$billingAddress = new PesapalAddressData(
+    phoneNumber: '0700325008',
+    emailAddress: 'test@xample.com',
+    countryCode: ISOCountryCode::KE
+    firstName: 'Amos', 
+    middleName: 'Njogu'
+//    lastName: ''
+    line2: "Gil House, Nairobi, Tom Mboya Street",
+//    city: "",
+//    state: "",
+//    postalCode: "",
+//    zipCode: "",
+);
+
+$order = Pesapal::createOrder(
+    orderData: $orderData,
+    billingAddress: $billingAddress,
+);
+```
+
+If the response was successful, your response should be as follows.
+
+```php
+[
+    "order_tracking_id" => "b945e4af-80a5-4ec1-8706-e03f8332fb04",
+    "merchant_reference" => "TEST1515111119",
+    "redirect_url" => "https://cybqa.pesapal.com/pesapaliframe/PesapalIframe3/Index/?OrderTrackingId=b945e4af-80a5-4ec1-8706-e03f8332fb04",
+    "error" => null,
+    "status" => "200"
+]
+```
+
+You can now re-direct the user to the `redirect_url` to complete the payment.
 
 ## Testing
 
