@@ -112,23 +112,22 @@ it(description: 'can get transaction status', closure: function () {
         orderTrackingId: $trackingId,
     );
 
-    expect(value: $transaction->amount)->toBe(expected: $amount)
-        ->and(value: $transaction->created_date)->not->toBeEmpty()
-    ->and(value: $transaction->payment_status_description)->toBe(expected: TransactionStatusCode::INVALID->name)
-    ->and(value: $transaction->call_back_url)->not->toBeEmpty()
-    ->and(value: $transaction->error->call_back_url)->not->toBeEmpty()
-    ->and(value: $transaction->message)->toBe(expected: "Request processed successfully")
-    ->and(value: $transaction->merchant_reference)->not->toBeEmpty()
-    ->and(value: $transaction->currency)->toBe(expected: ISOCurrencyCode::KES->name)
-    ->and(value: $transaction->status_code)->toBe(expected: TransactionStatusCode::INVALID->value)
-    ->and(value: $transaction->status)->toBe(expected: TransactionStatus::INCOMPLETE->value)
-    ->and(value: $transaction->payment_method)->toBeEmpty()
-    ->and(value: $transaction->description)->toBeEmpty()
-    ->and(value: $transaction->confirmation_code)->toBeEmpty()
-    ->and(value: $transaction->payment_account)->toBeEmpty()
-    ->and(value: $transaction->payment_status_code)->toBeEmpty()
-    ->and(value: $transaction->error->error_type)->toBe(expected: 'api_error')
-    ->and(value: $transaction->error->code)->toBe(expected: 'payment_details_not_found')
-    ->and(value: $transaction->error->message)->toBe(expected: 'Pending Payment');
+    expect(value: $transaction['amount'])->toBe(expected: $amount)
+        ->and(value: $transaction['created_date'])->not->toBeEmpty()
+    ->and(value: $transaction['payment_status_description'])->toBe(expected: TransactionStatusCode::INVALID->name)
+    ->and(value: $transaction['call_back_url'])->not->toBeEmpty()
+    ->and(value: $transaction['message'])->toBe(expected: "Request processed successfully")
+    ->and(value: $transaction['merchant_reference'])->not->toBeEmpty()
+    ->and(value: $transaction['currency'])->toBe(expected: ISOCurrencyCode::KES->name)
+    ->and(value: $transaction['status_code'])->toBe(expected: TransactionStatusCode::INVALID->value)
+    ->and(value: $transaction['status'])->toBe(expected: (string) TransactionStatus::INCOMPLETE->value)
+    ->and(value: $transaction['payment_method'])->toBeEmpty()
+    ->and(value: $transaction['description'])->toBeEmpty()
+    ->and(value: $transaction['confirmation_code'])->toBeEmpty()
+    ->and(value: $transaction['payment_account'])->toBeEmpty()
+    ->and(value: $transaction['payment_status_code'])->toBeEmpty()
+    ->and(value: $transaction['error']['error_type'])->toBe(expected: 'api_error')
+    ->and(value: $transaction['error']['code'])->toBe(expected: 'payment_details_not_found')
+    ->and(value: $transaction['error']['message'])->toBe(expected: 'Pending Payment');
 
 });
