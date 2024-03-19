@@ -115,14 +115,17 @@ class Pesapal
     /**
      * @throws FatalRequestException
      * @throws RequestException
+     * @throws JsonException
      */
-    public static function getTransactionStatus(string $orderTrackingId)
+    public static function getTransactionStatus(string $orderTrackingId): array | Response
     {
         $connector = new PesapalConnector();
         $request = new GetPesapalTransactionStatus(orderTrackingId: $orderTrackingId);
 
         $response = $connector->send($request);
 
-        return $response->dtoOrFail();
+
+
+        return $response->ok() ? $response->array() : $response;
     }
 }

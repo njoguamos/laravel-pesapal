@@ -97,12 +97,13 @@ You can also call the `createToken' in `Pesapal` class directly to generate the 
 use NjoguAmos\Pesapal\Pesapal;
 
 $token = Pesapal::createToken();
-
-// $token in an Instance of PesapalToken Eloquent Model
-$data = $token->toArray();
 ````
 
-Sample output
+The results of `createToken` is an instance of `PesapalToken` Eloquent Model. Which mean you can call Eloquent methods e.g.
+
+```php
+$data = $token->toArray();
+```
 
 ```php
 [
@@ -124,12 +125,13 @@ $ipn = Pesapal::createIpn(
     url: 'https://www.yourapp.com/ipn',
     ipnType: IpnType::GET,
 );
-
-// $ipn is an Instance of PesapalIpn Eloquent Model
-$data = $ipn->toArray();
 ````
 
-Sample output
+The results of `createIpn` is an instance of `PesapalIpn` Eloquent Model. Which mean you can call Eloquent methods e.g. 
+
+```php
+$data = $ipn->toArray();
+```
 
 ```php
 [
@@ -151,7 +153,7 @@ You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
 
 There are two ways to get the registered IPNs. 
 
-1. You can use the `getIpns` method in the `Pesapal` class to get a IPN from Pesapal API.
+1. You can use the `getIpns` method in the `Pesapal` class to get a IPN from Pesapal API.  This method returns an array for successful response or an instance of [Saloon Response](https://docs.saloon.dev/the-basics/responses) for failed response.
 
 ```php
 use NjoguAmos\Pesapal\Pesapal;
@@ -160,22 +162,23 @@ use NjoguAmos\Pesapal\Pesapal;
 $response = Pesapal::getIpns();
 ```
 
-```json
+Sample successful response
+```php
 [
-    {
-        "url": "https://www.myapplication.com/ipn",
-        "created_date": "2022-03-03T17:29:03.7208266Z",
-        "ipn_id": "e32182ca-0983-4fa0-91bc-c3bb813ba750",
-        "error": null,
-        "status": "200"
-    },
-    {
-        "url": "https://ipn.myapplication.com/application2",
-        "created_date": "2021-12-05T04:23:45.5509243Z",
-        "ipn_id": "c3bb813ba750-0983-4fa0-91bc-e32182ca",
-        "error": null,
-        "status": "200"
-    }
+    [
+        "url" => "https://www.myapplication.com/ipn",
+        "created_date" => "2022-03-03T17:29:03.7208266Z",
+        "ipn_id" => "e32182ca-0983-4fa0-91bc-c3bb813ba750",
+        "error" => null,
+        "status" => "200"
+    ],
+    [
+        "url"=> "https://ipn.myapplication.com/application2",
+        "created_date"=> "2021-12-05T04:23:45.5509243Z",
+        "ipn_id"=> "c3bb813ba750-0983-4fa0-91bc-e32182ca",
+        "error"=> null,
+        "status"=> "200"
+    ]
 ]
 ```
 
@@ -213,7 +216,7 @@ $ips = PesapalIpn::all();
 
 ### 4. Submit Order Request Endpoint
 
-To submit an order request, you can use the `createOrder` method in the `Pesapal` class. You will need to construct a DTO for `PesapalOrderData` and `PesapalAddressData` as shown below.
+To submit an order request, you can use the `createOrder` method in the `Pesapal` class. You will need to construct a DTO for `PesapalOrderData` and `PesapalAddressData` as shown below.  This method returns an array for successful response or an instance of [Saloon Response](https://docs.saloon.dev/the-basics/responses) for failed response.
 
 > **info** You must provide a registered `PesapalIpn`.
 
@@ -261,7 +264,7 @@ $order = Pesapal::createOrder(
 );
 ```
 
-If the response was successful, your response should be as follows.
+Sample successful response
 
 ```php
 [
@@ -278,7 +281,7 @@ You can now re-direct the user to the `redirect_url` to complete the payment.
 
 ### 5. Get Transaction Status Endpoint
 
-You can check the status of a transaction using `OrderTrackingId` issued when creating an order.
+You can check the status of a transaction using `OrderTrackingId` issued when creating an order. You can do so by using the `getTransactionStatus` method in the `Pesapal` class. This method returns an array for successful response or an instance of [Saloon Response](https://docs.saloon.dev/the-basics/responses) for failed response.
 
 ```php
 use NjoguAmos\Pesapal\Pesapal;
@@ -287,34 +290,73 @@ use NjoguAmos\Pesapal\Pesapal;
     orderTrackingId: 'b945e4af-80a5-4ec1-8706-e03f8332fb04',
 );
 
-// $transaction is an instance of TransactionStatusResponse DTO
+// $transaction either an array or an instance of Saloon Response
 ```
 
-You should be able to get response details for the `$transaction` DTO
-
-| `$transaction` Property      | Description                                            | Sample response                                                                                                        |
-|------------------------------|--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `payment_method`             | payment method used                                    | `Visa`, `MPESA`, `""`                                                                                                  |
-| `amount`                     | order amount                                           | `1200`                                                                                                                 |
-| `created_date`               | payment date in `UTC`                                  | `2022-04-30T07:41:09.763`                                                                                              |
-| `confirmation_code`          | payment provider code                                  | `SCI5FB84RD`                                                                                                           |
-| `payment_status_description` | transaction status                                     | `INVALID`, `FAILED`, `COMPLETED` or `REVERSED`.                                                                        |
-| `description`                | payment status description                             | `"Unable to Authorize Transaction.Kindly contact your bank for assistance"`.                                           |
-| `message`                    | whether transaction was processed successfully or not. | `"Request processed successfully"`.                                                                                    |
-| `payment_account`            | Masked card number or phone number used during payment | `0700*****8`, `"`                                                                                                      |
-| `call_back_url`              | Payment redirect url                                   | `https://test.com/?OrderTrackingId=7e6b62d9-883e-440f-a63e-e1105bbfadc3&OrderMerchantReference=1515111111`             |
-| `status_code`                | Payment status description                             | `0` - INVALID, `1` - COMPLETED, `2` - FAILED or `3` - REVERSED                                                         |
-| `merchant_reference`         | Unique ID provided during SubmitOrderRequest           | `1515111111`, `7e6b62d9-883e-440f-a63e-e1105bbfadc`                                                                    |
-| `currency`                   | Transaction currency                                   | `KES`, `USD`                                                                                                           |
-| `status`                     | HTTP status code                                       | `200`, `500`                                                                                                           |
-| `error`                      | An error object                                        | `{ "error_type": 'api_error, "code": 'payment_details_not_found, "message": 'Pending Payment, "call_back_url": null }` |
-
+Sample successful response
+```php
+[
+  "payment_method" => "MpesaKE"
+  "amount" => 6.0
+  "created_date" => "2024-03-19T20:08:46.39"
+  "confirmation_code" => "SCJ8JQ26SW"
+  "order_tracking_id" => "af2234da-03ee-4b60-b2dd-dd746bcda1bd"
+  "payment_status_description" => "Completed"
+  "description" => null
+  "message" => "Request processed successfully"
+  "payment_account" => "2547xxx56689"
+  "call_back_url" => "http://127.0.0.1:8000/pesapal-callback?OrderTrackingId=af2234da-03ee-4b60-b2dd-dd746bcda1bd&OrderMerchantReference=1"
+  "status_code" => 1
+  "merchant_reference" => "1"
+  "payment_status_code" => ""
+  "currency" => "KES"
+  "error" => [
+    "error_type" => null
+    "code" => null
+    "message" => null
+  ]
+  "status" => "200"
+]
+```
 
 ### 6. Recurring / Subscription Based Payments
 - [ ] TODO: Add documentation for recurring payments
 
 ### 7. Refund Request
 - [ ] TODO: Add documentation for refund request
+
+
+## A note about responses
+
+For flexibility and simplicity, the `Pesapal` static method returns an `array` for successful responses or an instance of `Saloon Response` for failed responses.
+
+Example, when getting the transaction status using `getTransactionStatus` will either return an array of transaction details or an instance of `Saloon Response` if the request was not successful.
+
+```php
+use NjoguAmos\Pesapal\Pesapal;
+
+ $transaction = Pesapal::getTransactionStatus(
+    orderTrackingId: 'b945e4af-80a5-4ec1-8706-e03f8332fb04',
+);
+
+if (is_array($transaction)) {
+    // The API call was successful and response is an array
+    //    [
+    //      "payment_method" => "MpesaKE"
+    //      "amount" => 6.0
+    //      "created_date" => "2024-03-19T20:08:46.39"
+    //      "confirmation_code" => "SCJ8JQ26SW"
+    //      "....more field"
+    //    ]
+} else {
+    // The API call was not successful. The response is an instance of Saloon Response
+    // $transaction->status() ---> response status code.
+    // $transaction->headers() ---> Returns all response headers
+    // $transaction->getPendingRequest() ---> PendingRequest class that was built up for the request.
+}
+```
+
+You can learn more about the [Saloon Response(https://docs.saloon.dev/the-basics/responses). You can use the response to diagnose the issue with the request.
 
 ## Testing
 
