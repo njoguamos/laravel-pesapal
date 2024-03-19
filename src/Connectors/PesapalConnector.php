@@ -7,7 +7,7 @@ use Saloon\Http\Auth\TokenAuthenticator;
 
 class PesapalConnector extends PesapalBaseConnector
 {
-    public string $token;
+    public ?string $token;
 
     public function __construct()
     {
