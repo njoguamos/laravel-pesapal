@@ -19,6 +19,9 @@ This package provides a way of interacting with Pesapal API. It provides a way o
 - Provide a way of storing Instant Payment Notifications (IPNs) in the database
 - Saves you time from writing the same code over and over again
 
+## Playground
+
+If you are looking to test this package, I have created a [playground](https://github.com/njoguamos/laravel-pesapal-playground) where you can test the package without having to create a new Laravel project.
 
 ## Installation
 
