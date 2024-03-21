@@ -72,6 +72,8 @@ The command will get a fresh `access_token` from Pesapal API using the `CONSUMER
 
 ```php
  # Laravel 10 -> app/Console/Kernel.php
+
+use NjoguAmos\Pesapal\Models\PesapalToken;
  
 class Kernel extends ConsoleKernel
 {
@@ -80,7 +82,7 @@ class Kernel extends ConsoleKernel
     {
         # Other scheduled commands
         $schedule->command('pesapal:auth')->everyFourMinutes();
-        $schedule->command('model:prune')->everyFiveMinutes();
+        Schedule::command('model:prune', ['--model' => [PesapalToken::class]])->everyFiveMinutes();
     }
 }
 ```
