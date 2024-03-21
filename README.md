@@ -74,10 +74,9 @@ The command will get a fresh `access_token` from Pesapal API using the `CONSUMER
  # Laravel 10 -> app/Console/Kernel.php
 
 use NjoguAmos\Pesapal\Models\PesapalToken;
- 
+
 class Kernel extends ConsoleKernel
 {
- 
     protected function schedule(Schedule $schedule): void
     {
         # Other scheduled commands
@@ -91,7 +90,7 @@ class Kernel extends ConsoleKernel
  # Laravel 11 -> routes/console.php
 use Illuminate\Support\Facades\Schedule;
 use NjoguAmos\Pesapal\Models\PesapalToken;
- 
+
 Schedule::command('pesapal:auth')->everyFourMinutes();
 Schedule::command('model:prune', ['--model' => [PesapalToken::class]])->everyFiveMinutes();
 ```
@@ -132,7 +131,7 @@ $ipn = Pesapal::createIpn(
 );
 ````
 
-The results of `createIpn` is an instance of `PesapalIpn` Eloquent Model. Which mean you can call Eloquent methods e.g. 
+The results of `createIpn` is an instance of `PesapalIpn` Eloquent Model. Which mean you can call Eloquent methods e.g.
 
 ```php
 $data = $ipn->toArray();
@@ -156,7 +155,7 @@ You can go ahead and use the `ipn_id` to submit a Submit Order Requests.
 
 ### 3. Get Registered IPNs Endpoint
 
-There are two ways to get the registered IPNs. 
+There are two ways to get the registered IPNs.
 
 1. You can use the `getIpns` method in the `Pesapal` class to get a IPN from Pesapal API.  This method returns an array for successful response or an instance of [Saloon Response](https://docs.saloon.dev/the-basics/responses) for failed response.
 
@@ -196,7 +195,7 @@ $ips = PesapalIpn::all();
 ```
 
 ```php
-[ 
+[
     [
     "id" => 1
     "url" => "http://kautzer.com/omnis-ut-qui-illo-id-laborum-numquam"
@@ -253,7 +252,7 @@ $billingAddress = new PesapalAddressData(
     phoneNumber: '0700325008',
     emailAddress: 'test@xample.com',
     countryCode: ISOCountryCode::KE
-    firstName: 'Amos', 
+    firstName: 'Amos',
     middleName: 'Njogu'
 //    lastName: ''
     line2: "Gil House, Nairobi, Tom Mboya Street",
