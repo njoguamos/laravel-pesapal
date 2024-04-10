@@ -1,5 +1,3 @@
-> **warning** This package is still under development and is not ready for use in production. Please do not use it in production until this warning is removed.
-
 ![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=njoguamos%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 # Laravel 10+ package for interacting with Pesapal API
