@@ -991,21 +991,21 @@
         },
         {
             "name": "daverandom/libdns",
-            "version": "v2.0.3",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DaveRandom/LibDNS.git",
-                "reference": "42c2d700d1178c9f9e78664793463f7f1aea248c"
+                "reference": "b84c94e8fe6b7ee4aecfe121bfe3b6177d303c8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DaveRandom/LibDNS/zipball/42c2d700d1178c9f9e78664793463f7f1aea248c",
-                "reference": "42c2d700d1178c9f9e78664793463f7f1aea248c",
+                "url": "https://api.github.com/repos/DaveRandom/LibDNS/zipball/b84c94e8fe6b7ee4aecfe121bfe3b6177d303c8a",
+                "reference": "b84c94e8fe6b7ee4aecfe121bfe3b6177d303c8a",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
-                "php": ">=7.0"
+                "php": ">=7.1"
             },
             "suggest": {
                 "ext-intl": "Required for IDN support"
@@ -1029,9 +1029,9 @@
             ],
             "support": {
                 "issues": "https://github.com/DaveRandom/LibDNS/issues",
-                "source": "https://github.com/DaveRandom/LibDNS/tree/v2.0.3"
+                "source": "https://github.com/DaveRandom/LibDNS/tree/v2.1.0"
             },
-            "time": "2022-09-20T18:15:38+00:00"
+            "time": "2024-04-12T12:12:48+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -4410,16 +4410,16 @@
         },
         {
             "name": "spatie/laravel-data",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-data.git",
-                "reference": "1b01160029e63d729177aeda38c54df8f7ecb100"
+                "reference": "67ea943f99f120a0b0714a82281344c9b4913a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/1b01160029e63d729177aeda38c54df8f7ecb100",
-                "reference": "1b01160029e63d729177aeda38c54df8f7ecb100",
+                "url": "https://api.github.com/repos/spatie/laravel-data/zipball/67ea943f99f120a0b0714a82281344c9b4913a31",
+                "reference": "67ea943f99f120a0b0714a82281344c9b4913a31",
                 "shasum": ""
             },
             "require": {
@@ -4482,7 +4482,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-data/issues",
-                "source": "https://github.com/spatie/laravel-data/tree/4.5.0"
+                "source": "https://github.com/spatie/laravel-data/tree/4.5.1"
             },
             "funding": [
                 {
@@ -4490,7 +4490,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-04T13:53:41+00:00"
+            "time": "2024-04-10T07:58:13+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
