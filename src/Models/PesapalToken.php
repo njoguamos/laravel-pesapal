@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\MassPrunable;
+use Illuminate\Database\Eloquent\Prunable;
 
 /**
  * Class PesapalToken
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\MassPrunable;
  */
 class PesapalToken extends Model
 {
-    use MassPrunable;
+    use Prunable;
     use HasFactory;
 
     protected $fillable = [
