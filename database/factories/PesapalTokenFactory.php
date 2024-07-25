@@ -16,4 +16,11 @@ class PesapalTokenFactory extends Factory
             'expires_at'   => now()->addMinutes(5),
         ];
     }
+
+    public function expired(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'expires_at' => now()->subMinute()
+        ]);
+    }
 }
