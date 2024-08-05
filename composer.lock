@@ -4319,16 +4319,16 @@
         },
         {
             "name": "saloonphp/saloon",
-            "version": "v3.9.1",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/saloonphp/saloon.git",
-                "reference": "113332a57c698ee2af24fb68691490b91f56ad33"
+                "reference": "69c2cbc7636b0a36024479c880a48aad40b781d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/113332a57c698ee2af24fb68691490b91f56ad33",
-                "reference": "113332a57c698ee2af24fb68691490b91f56ad33",
+                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/69c2cbc7636b0a36024479c880a48aad40b781d3",
+                "reference": "69c2cbc7636b0a36024479c880a48aad40b781d3",
                 "shasum": ""
             },
             "require": {
@@ -4347,7 +4347,7 @@
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "illuminate/collections": "^9.39 || ^10.0",
                 "league/flysystem": "^3.0",
-                "pestphp/pest": "^2.6",
+                "pestphp/pest": "^2.10",
                 "phpstan/phpstan": "^1.11.4",
                 "saloonphp/xml-wrangler": "^1.1",
                 "spatie/ray": "^1.33",
@@ -4388,7 +4388,7 @@
             ],
             "support": {
                 "issues": "https://github.com/saloonphp/saloon/issues",
-                "source": "https://github.com/saloonphp/saloon/tree/v3.9.1"
+                "source": "https://github.com/saloonphp/saloon/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -4396,7 +4396,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-26T06:26:47+00:00"
+            "time": "2024-08-03T14:11:59+00:00"
         },
         {
             "name": "spatie/laravel-data",
