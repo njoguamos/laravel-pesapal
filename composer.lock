@@ -4522,16 +4522,16 @@
         },
         {
             "name": "saloonphp/saloon",
-            "version": "v3.10.0",
+            "version": "v3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/saloonphp/saloon.git",
-                "reference": "69c2cbc7636b0a36024479c880a48aad40b781d3"
+                "reference": "d5bb5d6d72ed33efe19a8463ef259f0aa7e98579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/69c2cbc7636b0a36024479c880a48aad40b781d3",
-                "reference": "69c2cbc7636b0a36024479c880a48aad40b781d3",
+                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/d5bb5d6d72ed33efe19a8463ef259f0aa7e98579",
+                "reference": "d5bb5d6d72ed33efe19a8463ef259f0aa7e98579",
                 "shasum": ""
             },
             "require": {
@@ -4591,7 +4591,7 @@
             ],
             "support": {
                 "issues": "https://github.com/saloonphp/saloon/issues",
-                "source": "https://github.com/saloonphp/saloon/tree/v3.10.0"
+                "source": "https://github.com/saloonphp/saloon/tree/v3.10.1"
             },
             "funding": [
                 {
@@ -4599,7 +4599,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-03T14:11:59+00:00"
+            "time": "2024-12-03T00:16:23+00:00"
         },
         {
             "name": "spatie/laravel-data",
