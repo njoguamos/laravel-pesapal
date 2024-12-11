@@ -159,7 +159,6 @@ There are two ways to get the registered IPNs.
 
 ```php
 use NjoguAmos\Pesapal\Pesapal;
-use NjoguAmos\Pesapal\Pesapal;
 
 $response = Pesapal::getIpns();
 ```
