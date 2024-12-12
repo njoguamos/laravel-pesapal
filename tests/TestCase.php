@@ -34,8 +34,10 @@ class TestCase extends Orchestra
         config()->set('pesapal.consumer_key', 'qkio1BGGYAXTu2JOfm7XSXNruoZsrqEW');
         config()->set('pesapal.consumer_secret', 'osGQ364R49cXKeOYSpaOnT++rHs=');
 
-        //        $migration = include __DIR__.'/../database/migrations/modify_pesapal_access_token.php.stub';
-        $migration = include __DIR__.'/../database/migrations/create_pesapal_tables.php.stub';
-        $migration->up();
+        $migration1 = include __DIR__.'/../database/migrations/create_pesapal_tables.php.stub';
+        $migration2 = include __DIR__.'/../database/migrations/modify_pesapal_access_token.php.stub';
+        $migration1->up();
+        $migration2->up();
+
     }
 }
