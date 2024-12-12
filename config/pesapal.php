@@ -30,9 +30,9 @@ return [
     */
 
     'base_url' => [
-        'live'          => 'https://pay.pesapal.com/v3',
-        'staging'       => 'https://cybqa.pesapal.com/pesapalv3',
-        "redirect_url"  => "https://cybqa.pesapal.com/pesapaliframe/PesapalIframe3/Index"
+        'live'         => 'https://pay.pesapal.com/v3',
+        'staging'      => 'https://cybqa.pesapal.com/pesapalv3',
+        "redirect_url" => "https://cybqa.pesapal.com/pesapaliframe/PesapalIframe3/Index"
     ],
 
 
