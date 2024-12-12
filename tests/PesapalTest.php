@@ -131,3 +131,28 @@ it(description: 'can get transaction status', closure: function () {
     ->and(value: $transaction['error']['message'])->toBe(expected: 'Pending Payment');
 
 });
+
+
+test(description: 'returns live redirect url when pesapal live is true', closure: function () {
+    config()->set(key: 'pesapal.pesapal_live', value: true);
+    config()->set(key: 'pesapal.redirect_url.live', value: 'https://pay.pesapal.com/v3');
+
+    $orderTrackingId = 'ABC123';
+
+    $redirectUrl = Pesapal::getRedirectUrl(orderTrackingId: $orderTrackingId);
+
+    expect(value: $redirectUrl)
+        ->toBe(expected: 'https://pay.pesapal.com/v3?OrderTrackingId=ABC123');
+});
+
+test(description: 'returns staging redirect url when pesapal live is false', closure: function () {
+    config()->set(key: 'pesapal.pesapal_live', value: false);
+    config()->set(key: 'pesapal.redirect_url.staging', value: 'https://cybqa.pesapal.com/v3');
+
+    $orderTrackingId = 'ABC123';
+
+    $redirectUrl = Pesapal::getRedirectUrl(orderTrackingId: $orderTrackingId);
+
+    expect(value: $redirectUrl)
+        ->toBe(expected: 'https://cybqa.pesapal.com/v3?OrderTrackingId=ABC123');
+});

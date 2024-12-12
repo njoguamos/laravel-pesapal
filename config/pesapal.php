@@ -30,9 +30,23 @@ return [
     */
 
     'base_url' => [
-        'live'         => 'https://pay.pesapal.com/v3',
-        'staging'      => 'https://cybqa.pesapal.com/pesapalv3',
-        "redirect_url" => "https://cybqa.pesapal.com/pesapaliframe/PesapalIframe3/Index"
+        'live'    => 'https://pay.pesapal.com/v3',
+        'staging' => 'https://cybqa.pesapal.com/pesapalv3',
+    ],
+
+    /*
+   |--------------------------------------------------------------------------
+   | Payment Redirect URL
+   |--------------------------------------------------------------------------
+   |
+   | This is the URL that you can use with order tracking ID to redirect the
+   | user to the payment page. It is important when you need to retry payment
+   | after the payment had failed.
+   |
+   */
+    "redirect_url" => [
+        "live"    => "https://pay.pesapal.com/iframe/PesapalIframe3/Index",
+        "staging" => "https://cybqa.pesapal.com/pesapaliframe/PesapalIframe3/Index"
     ],
 
 
