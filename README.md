@@ -326,6 +326,15 @@ Sample successful response
 ### 7. Refund Request
 - [ ] TODO: Add documentation for refund request
 
+### 8. Retrying Requests
+
+If for some reason, the payment did not complete and you have the order tracking ID, you can retry the payment by redirecting the user to the Pesapal payment page.
+
+```php
+$redirectUrl = config(key: 'pesapal.base_url.redirect_url');
+
+return redirect()->away($redirectUrl.'?OrderTrackingId='.$order->order_tracking_id);
+```
 
 ## A note about responses
 
