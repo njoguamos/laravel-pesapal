@@ -17,6 +17,7 @@ jobs:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
+
       postgres:
         image: postgres:15
         env:
@@ -34,8 +35,13 @@ jobs:
         php: [8.3, 8.2, 8.1]
         laravel: [10.*, 11.*]
         stability: [prefer-stable]
-        db: [mysql, pgsql]
         include:
+          - os: ubuntu-latest
+            db: mysql
+          - os: ubuntu-latest
+            db: pgsql
+          - os: windows-latest
+            db: sqlite # Use SQLite for Windows
           - laravel: 10.*
             testbench: 8.*
             carbon: ^2.72.3
@@ -76,8 +82,8 @@ jobs:
         env:
           DB_CONNECTION: ${{ matrix.db }}
           DB_HOST: 127.0.0.1
-          DB_PORT: ${{ matrix.db == 'mysql' && '3306' || '5432' }}
-          DB_DATABASE: test
-          DB_USERNAME: ${{ matrix.db == 'mysql' && 'root' || 'postgres' }}
-          DB_PASSWORD: ${{ matrix.db == 'mysql' && '' || 'postgres' }}
+          DB_PORT: ${{ matrix.db == 'mysql' && '3306' || matrix.db == 'pgsql' && '5432' || '' }}
+          DB_DATABASE: ${{ matrix.db == 'sqlite' && ':memory:' || 'test' }}
+          DB_USERNAME: ${{ matrix.db == 'mysql' && 'root' || matrix.db == 'pgsql' && 'postgres' || '' }}
+          DB_PASSWORD: ${{ matrix.db == 'mysql' && '' || matrix.db == 'pgsql' && 'postgres' || '' }}
         run: vendor/bin/pest --ci
