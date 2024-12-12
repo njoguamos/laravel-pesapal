@@ -22,6 +22,15 @@ use Saloon\Http\Response;
 
 class Pesapal
 {
+    public static function getRedirectUrl(string $orderTrackingId): string
+    {
+        if (config(key: 'pesapal.pesapal_live')) {
+            return config(key: 'pesapal.redirect_url.live')."?OrderTrackingId=$orderTrackingId";
+        } else {
+            return config(key: 'pesapal.redirect_url.staging')."?OrderTrackingId=$orderTrackingId";
+        }
+    }
+
     /**
      * @throws FatalRequestException
      * @throws RequestException

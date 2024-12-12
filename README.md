@@ -331,9 +331,10 @@ Sample successful response
 If for some reason, the payment did not complete and you have the order tracking ID, you can retry the payment by redirecting the user to the Pesapal payment page.
 
 ```php
-$redirectUrl = config(key: 'pesapal.base_url.redirect_url');
+use NjoguAmos\Pesapal\Pesapal;
 
-return redirect()->away($redirectUrl.'?OrderTrackingId='.$order->order_tracking_id);
+$redirectUrl = Pesapal::getRedirectUrl(orderTrackingId: $orderTrackingId);
+// https://pay.pesapal.com/iframe/PesapalIframe3/Index?OrderTrackingId=db80f574-a759-40b3-a6ec-dc68ef3dc1e6
 ```
 
 ## A note about responses
