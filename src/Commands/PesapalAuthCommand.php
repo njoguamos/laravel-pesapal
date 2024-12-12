@@ -24,7 +24,7 @@ class PesapalAuthCommand extends Command
     {
         $token = Pesapal::createToken();
 
-        if($token instanceof PesapalToken) {
+        if ($token instanceof PesapalToken) {
             $this->info(string: 'A fresh access token has been retrieved and saved to the database.');
 
             return self::SUCCESS;
