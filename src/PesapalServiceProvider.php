@@ -22,7 +22,7 @@ class PesapalServiceProvider extends PackageServiceProvider
             ->hasMigrations([
                 'create_pesapal_tables',
                 'modify_pesapal_access_token',
-            ] )
+            ])
             ->hasCommand(commandClassName: PesapalAuthCommand::class)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
