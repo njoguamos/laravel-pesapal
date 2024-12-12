@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use NjoguAmos\Pesapal\Models\PesapalToken;
 
