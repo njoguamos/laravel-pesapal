@@ -1,6 +1,6 @@
 ![](https://banners.beyondco.de/Laravel%20Pesapal.png?theme=light&packageManager=composer+require&packageName=njoguamos%2Flaravel-pesapal&pattern=rain&style=style_2&description=A+Laravel+package+for+interacting+with+https%3A%2F%2Fwww.pesapal.com+api&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
-# Laravel 10+ package for interacting with Pesapal API
+# Laravel 11+ package for interacting with Pesapal API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-pesapal.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-pesapal)
 ![GitHub Actions Test Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-pesapal/run-tests.yml?logo=github&label=Tests)
@@ -22,6 +22,11 @@ This package provides a way of interacting with Pesapal API. It provides a way o
 If you are looking to test this package, I have created a [playground](https://github.com/njoguamos/laravel-pesapal-playground) where you can test the package without having to create a new Laravel project.
 
 ## Installation
+
+| Version | Supported Laravel |
+|---------|-------------------|
+| 1.x     | 10.x, 11.x        |
+| 2.x     | 11.x, 12.x        |
 
 You can install the package via composer:
 
