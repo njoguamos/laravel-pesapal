@@ -4462,16 +4462,16 @@
         },
         {
             "name": "saloonphp/saloon",
-            "version": "v3.11.2",
+            "version": "v3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/saloonphp/saloon.git",
-                "reference": "6edaad4227ddf25efd59caa7f73c005cf860b74b"
+                "reference": "87bde73866e9c1814a8a8fac2dd0fbfd414ec1dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/6edaad4227ddf25efd59caa7f73c005cf860b74b",
-                "reference": "6edaad4227ddf25efd59caa7f73c005cf860b74b",
+                "url": "https://api.github.com/repos/saloonphp/saloon/zipball/87bde73866e9c1814a8a8fac2dd0fbfd414ec1dd",
+                "reference": "87bde73866e9c1814a8a8fac2dd0fbfd414ec1dd",
                 "shasum": ""
             },
             "require": {
@@ -4490,8 +4490,8 @@
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "illuminate/collections": "^9.39 || ^10.0",
                 "league/flysystem": "^3.0",
-                "pestphp/pest": "^2.10",
-                "phpstan/phpstan": "^1.11.4",
+                "pestphp/pest": "^2.36.0 || ^3.8.2",
+                "phpstan/phpstan": "^2.1.13",
                 "saloonphp/xml-wrangler": "^1.1",
                 "spatie/ray": "^1.33",
                 "symfony/dom-crawler": "^6.0 || ^7.0",
@@ -4531,7 +4531,7 @@
             ],
             "support": {
                 "issues": "https://github.com/saloonphp/saloon/issues",
-                "source": "https://github.com/saloonphp/saloon/tree/v3.11.2"
+                "source": "https://github.com/saloonphp/saloon/tree/v3.13.0"
             },
             "funding": [
                 {
@@ -4539,7 +4539,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-01T18:36:10+00:00"
+            "time": "2025-05-02T17:20:03+00:00"
         },
         {
             "name": "spatie/laravel-data",
