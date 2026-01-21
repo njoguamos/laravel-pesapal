@@ -19,7 +19,10 @@ class PesapalServiceProvider extends PackageServiceProvider
         $package
             ->name(name: 'laravel-pesapal')
             ->hasConfigFile()
-            ->hasMigration(migrationFileName: 'create_pesapal_tables')
+            ->hasMigrations([
+                'create_pesapal_tables',
+                'modify_pesapal_access_token',
+            ])
             ->hasCommand(commandClassName: PesapalAuthCommand::class)
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
